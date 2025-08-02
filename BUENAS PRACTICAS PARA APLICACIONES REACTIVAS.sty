@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\geometry{letterpaper, margin=2.4cm}
+\usepackage{times}
+
+\begin{document}
+
+\begin{center}
+\textbf{\uppercase{BUENAS PRACTICAS PARA APLICACIONES REACTIVAS}}\\
+\textit{S. G. Hernández Gabriel}\\
+\textit{7690-21-21318} Universidad Mariano Gálvez\\
+\textit{}Seminario de Tecnologías de Información\\
+\textit{shernnadezg20@miumg.edu.gt}
+\end{center}
+
+\textbf{Resumen}\\
+El desarrollo de aplicaciones reactivas se ha convertido en un enfoque esencial para lograr sistemas que respondan de manera eficiente a demandas cambiantes, altas cargas de usuarios y fallos en componentes distribuidos. Este artículo sintetiza las principales buenas prácticas para diseñar aplicaciones reactivas modernas, entre ellas el uso de comunicación asíncrona, diseño resiliente, elasticidad, respuesta constante y herramientas adecuadas como Spring WebFlux o Akka. A lo largo del trabajo se destacan tanto los principios teóricos del manifiesto reactivo como aplicaciones prácticas relevantes. Las recomendaciones aquí descritas buscan orientar a los desarrolladores a construir software escalable, robusto y alineado a estándares modernos. Asimismo, se presentan observaciones propias surgidas del análisis crítico del tema, con el objetivo de promover el pensamiento reflexivo y técnico. Este ensayo fue desarrollado como parte de la formación académica, y sus conclusiones pretenden contribuir a la comprensión y aplicación efectiva del paradigma reactivo en el desarrollo de software actual.
+
+\textbf{Palabras claves:} aplicaciones reactivas, resiliencia, asíncrono, escalabilidad, frameworks modernos
+
+\textbf{Desarrollo del tema}\\
+La evolución del software ha requerido nuevos modelos arquitectónicos capaces de responder a la complejidad de los sistemas modernos. Las aplicaciones reactivas surgen como una respuesta a la necesidad de construir soluciones más flexibles, eficientes y tolerantes a fallos. Según el Manifiesto Reactivo (Reactive Manifesto), un sistema reactivo debe ser responsivo, resiliente, elástico y orientado a mensajes. Estas características permiten que una aplicación se mantenga funcional bajo diferentes condiciones, como picos de carga o errores internos.
+
+Una de las prácticas fundamentales en este tipo de desarrollo es adoptar la comunicación asíncrona basada en eventos o mensajes. A diferencia de las llamadas directas o sincrónicas, este enfoque reduce la dependencia entre componentes y mejora el rendimiento del sistema. Tecnologías como RabbitMQ, Kafka y el modelo de actores de Akka hacen posible esta comunicación desacoplada y eficiente.
+
+Además, es vital considerar la resiliencia desde el diseño. Una aplicación debe ser capaz de recuperarse automáticamente ante fallos de componentes. Se pueden emplear técnicas como aislamiento de fallos, supervisión activa, replicación, y patrones como circuit breakers para evitar que una falla se propague por todo el sistema.
+
+La elasticidad también representa un principio clave. Diseñar sistemas sin estado (stateless) y apoyarse en contenedores y herramientas como Kubernetes permite que las aplicaciones escalen según las necesidades reales, optimizando recursos y costos. Esto también está relacionado con la eficiencia y sostenibilidad de las soluciones.
+
+Otra práctica importante es asegurar tiempos de respuesta predecibles, lo cual se conoce como capacidad de respuesta o responsividad. Esta se logra utilizando procesamiento no bloqueante, asignación eficiente de hilos y estrategias de priorización.
+
+Finalmente, resulta esencial adoptar herramientas especializadas. Frameworks como Spring WebFlux, Project Reactor y Akka facilitan el desarrollo de aplicaciones reactivas mediante programación declarativa, flujos de datos reactivos y arquitecturas escalables. Elegir la herramienta adecuada depende del caso de uso, lenguaje de programación y contexto del sistema.
+
+\textbf{Observaciones y comentarios}\\
+Durante el análisis del tema se observa que muchas organizaciones aún no adoptan el paradigma reactivo por desconocimiento o temor al cambio tecnológico. Sin embargo, aplicar estas buenas prácticas desde el inicio del diseño permite una transición más natural hacia sistemas modernos, especialmente en entornos distribuidos o con microservicios.
+
+\textbf{Conclusiones}
+\begin{enumerate}
+  \item Las aplicaciones reactivas mejoran significativamente la escalabilidad, disponibilidad y eficiencia de los sistemas.
+  \item Diseñar con resiliencia, elasticidad y comunicación asíncrona es fundamental para afrontar entornos de alta demanda.
+  \item La correcta selección de frameworks y patrones reactivos permite aplicar buenas prácticas desde la base.
+  \item La implementación del enfoque reactivo no es solo técnica, sino también cultural dentro de los equipos de desarrollo.
+  \item Adoptar estas prácticas impulsa la modernización del software y mejora la experiencia del usuario final.
+\end{enumerate}
+
+\textbf{Bibliografía}
+\begin{itemize}
+  \item Bonér, J. (2014). \textit{Principles of Reactive Systems Architecture}. Reactive Foundation.
+  \item Reactive Manifesto. (n.d.). Recuperado de \url{https://www.reactivemanifesto.org/}
+  \item Richards, M. (2015). \textit{Microservices vs. Service-Oriented Architecture}. O'Reilly Media.
+\end{itemize}
+\textbf{Repositorio GitHub:} \url{https://github.com/Tato3216/aplicaciones-reactivas-santos-hernandez}
+\end{document}
