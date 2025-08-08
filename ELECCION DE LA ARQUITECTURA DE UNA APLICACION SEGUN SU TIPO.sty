@@ -1,0 +1,84 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{times}
+\usepackage[left=2.4cm, right=2.4cm, top=2.4cm, bottom=2.4cm]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\baselinestretch}{1.0}
+\titleformat{\section}{\bfseries\large}{\thesection.}{1em}{}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\textbf{\uppercase{Elección de la arquitectura de una aplicación según su tipo}}\\
+\textit{G. H. Gabriel Santos}\\
+\textit{1234-56-78910 Universidad Mariano Gálvez}\\
+\textit{Arquitectura de Software}\\
+\textit{ghgabriel@umg.edu.gt}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Resumen} \\
+Seleccionar la arquitectura más adecuada para una aplicación representa una de las decisiones más importantes en el ciclo de desarrollo de software. Este artículo examina distintos estilos arquitectónicos como el modelo cliente-servidor, las arquitecturas por capas, los microservicios, las orientadas a servicios (SOA), y las impulsadas por eventos. A través del análisis de sus características, ventajas y limitaciones, se establece una guía que permite identificar cuál enfoque se ajusta mejor según el tipo de proyecto. La reflexión parte del reconocimiento de que no hay una solución única para todos los casos, por lo que se presentan criterios técnicos y organizacionales que orientan la elección. El trabajo es resultado de una investigación documental orientada a consolidar conocimientos actualizados que puedan ser aplicados por desarrolladores y estudiantes al momento de diseñar sus aplicaciones.
+
+\vspace{1em}
+\textbf{Palabras claves:} arquitectura de software, sistemas distribuidos, microservicios, SOA, diseño estructural
+
+\vspace{1em}
+\section*{Desarrollo del tema}
+
+La arquitectura de una aplicación define la manera en que sus componentes interactúan y cómo se estructuran para cumplir con los objetivos funcionales y no funcionales. Elegirla correctamente es esencial para asegurar que la solución sea escalable, mantenible y coherente con las necesidades del negocio o del usuario.
+
+\textbf{Cliente-servidor.} Este modelo establece una clara distinción entre el cliente, que solicita información o servicios, y el servidor, que responde a esas solicitudes. Es utilizado ampliamente en sistemas web o aplicativos donde el cliente consume recursos remotos. Su simplicidad lo hace útil en proyectos pequeños, aunque su escalabilidad es limitada si no se complementa con otras tecnologías.
+
+\textbf{Arquitectura en capas.} Organiza la aplicación en bloques funcionales jerárquicos (por ejemplo, presentación, lógica de negocio, y acceso a datos). Es uno de los modelos más comunes en empresas debido a su claridad estructural, lo cual facilita el mantenimiento y la colaboración entre equipos.
+
+\textbf{SOA (arquitectura orientada a servicios).} Está basada en la integración de distintos servicios autónomos que interactúan mediante protocolos estandarizados. Es especialmente útil en organizaciones con múltiples sistemas que deben interoperar entre sí. La reutilización de componentes es uno de sus principales beneficios.
+
+\textbf{Microservicios.} Este paradigma divide la aplicación en pequeños servicios independientes, cada uno enfocado en una funcionalidad específica. Permite un despliegue y mantenimiento más ágil, además de mejorar la tolerancia a errores. Sin embargo, requiere una infraestructura más robusta para su correcta implementación.
+
+\textbf{Arquitectura orientada a eventos.} Ideal para sistemas que requieren una alta capacidad de respuesta ante eventos en tiempo real. En este esquema, los módulos reaccionan de forma asincrónica a los sucesos del entorno, lo que mejora la eficiencia. Es usada en aplicaciones de monitoreo, IoT, o procesamiento en streaming.
+
+\textbf{Factores determinantes para la elección.} La mejor elección depende de múltiples variables, entre ellas:
+
+\begin{itemize}[noitemsep]
+    \item Nivel de complejidad del sistema
+    \item Escalabilidad esperada
+    \item Tolerancia a fallos
+    \item Frecuencia de actualizaciones
+    \item Experiencia técnica del equipo
+\end{itemize}
+
+Por ejemplo, un sistema de facturación local puede funcionar eficazmente con un enfoque en capas, mientras que una plataforma de comercio electrónico con alto tráfico requerirá microservicios o una arquitectura basada en eventos.
+
+\vspace{1em}
+\section*{Observaciones y comentarios}
+
+Al abordar el tema, se identificó que el diseño arquitectónico no debe tomarse a la ligera, ya que implica compromisos técnicos y estratégicos. Asimismo, se observó un crecimiento en el uso de arquitecturas híbridas que combinan elementos de distintos enfoques según las necesidades del proyecto.
+
+\vspace{1em}
+\section*{Conclusiones}
+
+1. La arquitectura elegida debe corresponder con los objetivos y la escala de la aplicación.\\
+2. Cada modelo arquitectónico tiene ventajas específicas que deben evaluarse según el caso.\\
+3. Los microservicios, aunque modernos, no siempre son la mejor opción para proyectos pequeños.\\
+4. Una mala decisión arquitectónica puede dificultar el crecimiento y la estabilidad del sistema.\\
+5. La documentación, análisis previo y experiencia del equipo son fundamentales en este proceso.
+
+\vspace{1em}
+\section*{Bibliografía}
+
+1. Richards, M. (2020). \textit{Fundamentos de Arquitectura de Software}. O'Reilly Media.\\
+2. Bass, L., Clements, P., \& Kazman, R. (2012). \textit{Arquitectura de Software en Practica} (3rd ed.). Addison-Wesley.\\
+3. Taibi, D., Lenarduzzi, V., \& Pahl, C. (2020). Architecting Microservices: Trends and Challenges. \textit{IEEE Software}, 38(1), 28–35.\\
+4. Fowler, M. (2021). \textit{Patrones de Arquitectura de Aplicaciones Empresariales}. Addison-Wesley.\\
+
+
+\textbf{Repositorio GitHub:} \url{https://github.com/Tato3216/aplicaciones-reactivas-santos-hernandez}
+\end{document}
