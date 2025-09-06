@@ -1,0 +1,88 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{newtxtext,newtxmath}
+\usepackage[left=2.4cm,right=2.4cm,top=2.4cm,bottom=2.4cm]{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\singlespacing
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+
+\begin{center}
+\textbf{ORQUESTACION Y DESPLIEGUE DE SERVICIOS}\\[1ex]
+\textit{S. G. Hernández Gabriel}\\
+7690-21-21318 Universidad Mariano Gálvez\\
+Seminario de tecnologias de la informacion\\
+\textit{shernandezg@miumg.edu.gt}\\
+\textit{Repositorio: \url{https://github.com/USUARIO/REPOSITORIO}}
+\end{center}
+
+\vspace{1em}
+
+\noindent\textbf{Resumen}\\
+El presente artículo reúne un estudio aplicado sobre cinco ámbitos clave del desarrollo y operación de servicios modernos: orquestación de servidores, Kubernetes, microservicios, OAuth 2.0 e implementación de servicios en la nube siguiendo los principios de la metodología \"12-factor\". El objetivo fue investigar, comparar y sintetizar buenas prácticas y patrones arquitectónicos, y aplicar conceptos prácticos mediante ejemplos y código que se encuentran en el repositorio indicado. Como resultados se obtuvo: (1) un esquema comparativo de herramientas de orquestación y criterios de selección; (2) una guía condensada de conceptos y componentes esenciales de Kubernetes; (3) un resumen de ventajas, riesgos y patrones al diseñar microservicios; (4) recomendaciones de seguridad y flujos sugeridos para OAuth 2.0; y (5) una lista de puntos de control para adaptar aplicaciones a entornos cloud basados en los doce factores. Las conclusiones, derivadas del trabajo de campo y la revisión bibliográfica, enfatizan la necesidad de automatización, observabilidad y políticas de seguridad desde el diseño. El documento cumple con la actividad solicitada y enlaza el código de soporte en el repositorio del autor.\\
+
+\noindent\textbf{Palabras claves:} Kubernetes, Microservicios, OAuth2.0, 12-factor, Orquestación
+
+\vspace{0.75em}
+
+\noindent\textbf{Desarrollo del tema}
+
+\noindent\textbf{Orquestación de servidores}\\
+La orquestación de servidores agrupa y automatiza tareas operativas sobre conjuntos de nodos para gestionar despliegues, escalado, balanceo de carga, y recuperación ante fallos. Mientras que la administración manual es viable para entornos pequeños, la orquestación permite aplicar políticas declarativas —por ejemplo, asegurar que X réplicas de un servicio siempre estén disponibles— y automatizar rutinas como actualizaciones sin tiempo de inactividad (rolling updates) y escalado automático. Herramientas como Ansible, Chef o Salt se centran en configuración y provisión; soluciones de orquestación de contenedores (Kubernetes, Docker Swarm) añaden programación de contenedores, descubrimiento de servicios y abstracciones de red. En la práctica se recomienda separar responsabilidades: IaC (infrastructure as code) para provisión, y orquestadores para la ejecución y disponibilidad. La orquestación debe complementarse con monitoreo (métricas, logs, trazas) y políticas de recuperación (readiness/liveness) para garantizar la resiliencia.\\
+
+La orquestación de servidores es la automatización de tareas operativas como configuración, despliegue, balanceo de carga y recuperación ante fallos en múltiples nodos físicos o virtuales. Herramientas como Ansible, Puppet, Chef y SaltStack permiten definir el estado deseado de servidores y aplicarlo en forma consistente. La principal ventaja es reducir errores humanos y asegurar que todos los servidores cumplan políticas uniformes. Además, la orquestación se integra con pipelines de CI/CD para actualizaciones continuas y despliegues sin interrupciones. También permite autoescalado y aprovisionamiento dinámico de recursos en entornos híbridos o en la nube. Un entorno bien orquestado complementa estas capacidades con monitoreo, trazabilidad y mecanismos de recuperación automática, lo cual aumenta la resiliencia de los sistemas.
+
+\noindent\textbf{Kubernetes}\\
+Kubernetes (K8s) es la plataforma de orquestación de contenedores más extendida. Su arquitectura se basa en un plano de control (API Server, Scheduler, Controller Manager) y nodos de trabajo que ejecutan kubelet y contenedores en pods. Conceptos clave: Pod (unidad mínima de despliegue), Deployment (control de réplicas y actualizaciones), Service (exposición y descubrimiento), ConfigMap/Secret (configuración y secretos), Ingress (acceso HTTP externo), y PersistentVolume (almacenamiento). Kubernetes promueve la gestión declarativa mediante manifiestos YAML y el uso de controladores para reconciliar el estado real con el estado deseado. Buenas prácticas incluyen definir requests/limits de recursos, liveness/readiness probes, estrategia de actualización (rolling/blue-green/canary), y segregar entornos por namespaces. Para entornos productivos es esencial contar con políticas de seguridad (RBAC), control de acceso a la API, cifrado de secretos y estrategias de backup/restore para volúmenes y etcd.\\
+
+Kubernetes (K8s), desarrollado originalmente por Google, es la plataforma líder en orquestación de contenedores. Se basa en un plano de control compuesto por el API Server, etcd, Scheduler y Controller Manager, mientras que los nodos de trabajo ejecutan pods a través de kubelet. Entre sus objetos principales se incluyen: Pods, Deployments, Services, Ingress, ConfigMaps y Secrets. Kubernetes permite administrar aplicaciones en contenedores de manera declarativa mediante manifiestos YAML y asegura que el estado deseado sea mantenido automáticamente. Sus beneficios incluyen portabilidad entre proveedores de nube, resiliencia ante fallos, escalado horizontal automático y facilidad para realizar actualizaciones sin tiempo de inactividad. No obstante, su adopción implica retos como la curva de aprendizaje, la seguridad de clústeres y la necesidad de ecosistemas complementarios (Helm, Prometheus, Istio). La aplicación de buenas prácticas como el uso de probes, límites de recursos y control de acceso basado en roles (RBAC) son imprescindibles para entornos productivos.
+\\
+
+\noindent\textbf{Microservicios}\\
+Los microservicios proponen dividir una aplicación en servicios pequeños e independientes, cada uno con responsabilidad delimitada y ciclo de vida propio. Ventajas: despliegue independiente, escalado por componente, capacidad de elegir tecnologías por servicio y ciclos de entrega más cortos. Retos: complejidad operativa, necesidad de automatización, consistencia de datos distribuida, latencia por comunicación interservicios y mayor dificultad para pruebas integrales. Patrones recomendados: API Gateway para un punto de entrada único, Circuit Breaker para tolerancia a fallos, Saga para coherencia transaccional, y Observability (logs correlacionados, métricas y tracing distribuido). La adopción de microservicios exige inversión en infraestructura de soporte (CI/CD, observabilidad, service mesh) y normas de gobernanza para evitar la proliferación desordenada de servicios.
+\\
+
+La arquitectura de microservicios divide una aplicación en componentes pequeños, independientes y especializados, que se comunican generalmente a través de APIs REST, GraphQL o mensajería asincrónica. Su mayor fortaleza radica en la independencia de despliegue y escalado por servicio, lo que permite iterar rápidamente y optimizar recursos. Empresas como Netflix, Amazon y Spotify han demostrado su efectividad a gran escala. Sin embargo, esta arquitectura plantea retos significativos: pruebas distribuidas, gestión de latencia y consistencia de datos, y necesidad de observabilidad avanzada. Patrones de diseño comunes incluyen el uso de API Gateways, descubrimiento dinámico de servicios, Circuit Breaker para resiliencia y el patrón Saga para transacciones distribuidas. La adopción exitosa de microservicios exige disciplina en CI/CD, monitoreo distribuido, seguridad y gobernanza de APIs para evitar el caos arquitectónico.
+\\
+
+\noindent\textbf{OAuth 2.0}\\
+OAuth 2.0 es un marco de autorización que define roles (Resource Owner, Client, Authorization Server, Resource Server) y flujos para obtener tokens de acceso. Flujos comunes: Authorization Code (recomendado para aplicaciones servidor-cliente), Authorization Code con PKCE (para clientes públicos y móviles), Client Credentials (servicios máquina a máquina) y Refresh Tokens para prolongar sesiones. La seguridad práctica incluye: usar HTTPS siempre, minimizar scopes, aplicar caducidad corta a access tokens y usar refresh tokens con rotación y revocación; validar firmas de tokens cuando se utilicen JWT; y preferir Authorization Code + PKCE para clientes móviles/web. Además, cuando se requiere identidad además de autorización, se integra OpenID Connect sobre OAuth2.0. Evitar flujos obsoletos (implicit) y almacenar credenciales de forma segura son medidas imprescindibles.\\
+
+OAuth 2.0 es un marco de autorización ampliamente adoptado para permitir que aplicaciones accedan a recursos en nombre de un usuario sin exponer credenciales sensibles. Define cuatro roles: el propietario de recursos (usuario), el cliente (aplicación), el servidor de autorización (que emite tokens) y el servidor de recursos (que almacena datos). Sus flujos más relevantes son Authorization Code (para aplicaciones web), Authorization Code con PKCE (para clientes móviles y públicos), Client Credentials (para comunicación entre servicios) y Device Code (para dispositivos sin navegador). OAuth utiliza tokens de acceso de corta duración y refresh tokens para extender sesiones de forma segura. Las buenas prácticas incluyen el uso de HTTPS, limitación de permisos mediante scopes, validación de firmas en tokens (JWT) y rotación de credenciales comprometidas. Su uso es visible en casos cotidianos como el inicio de sesión con Google o Facebook y la autorización de aplicaciones móviles para acceder a datos de usuarios en APIs.
+\\
+
+\noindent\textbf{Implementación en la nube (12-factor application)}\\
+La metodología \"12-factor\" ofrece directrices para diseñar aplicaciones cloud-native: (1) un repositorio por código base, (2) declarar dependencias, (3) almacenar configuración en variables de entorno, (4) tratar servicios externos como recursos adjuntos, (5) separar build/release/run, (6) procesos estateless, (7) exponer servicios por binding de puerto, (8) escalar por procesos, (9) disposability (arranque y parada rápidos), (10) mantener paridad dev/prod, (11) tratar logs como streams, y (12) ejecutar tareas administrativas como procesos puntuales. Estas prácticas facilitan portabilidad, despliegue continuo y escalado en plataformas PaaS/containers (Heroku, AWS ECS/EKS, Google GKE). Para aplicar 12-factor en proyectos reales se recomienda: externalizar la configuración, no depender del sistema de archivos local para persistencia, instrumentar logging y métricas, y automatizar pipelines CI/CD que generen artefactos reproducibles (build → release).\\
+
+La metodología 12-factor app define principios de diseño para aplicaciones modernas y portables en la nube. Sus doce factores incluyen: (1) un código base versionado por repositorio, (2) declaración explícita de dependencias, (3) almacenamiento de configuración en variables de entorno, (4) tratamiento de servicios externos como recursos vinculados, (5) separación de fases de construcción, liberación y ejecución, (6) procesos stateless, (7) exposición de servicios mediante puerto, (8) escalado por procesos, (9) arranque y apagado rápidos (disposability), (10) paridad entre entornos de desarrollo y producción, (11) logs tratados como flujos y (12) tareas administrativas ejecutadas como procesos puntuales. Aplicar estos principios garantiza portabilidad entre nubes, mayor facilidad de despliegue continuo y resiliencia ante cambios. Plataformas como Heroku y Kubernetes han promovido esta metodología como estándar de facto para el desarrollo de aplicaciones nativas en la nube.
+
+\vspace{0.75em}
+
+\noindent\textbf{Observaciones y comentarios}\\
+Las tecnologías revisadas conforman un ecosistema donde cada pieza cumple un propósito: la orquestación y Kubernetes resuelven la operación a escala; los microservicios organizan la complejidad funcional; OAuth 2.0 aporta mecanismos de autorización seguros; y los principios 12-factor orientan el diseño para entornos cloud. En la práctica se observa que la adopción exitosa depende más de procesos (CI/CD, pruebas, observabilidad) y cultura (DevOps) que de la elección de una herramienta concreta. Recomiendo acompañar cualquier migración con pruebas de carga, planes de rollback y formación del equipo. El código de ejemplo y scripts usados para las pruebas están en el repositorio indicado.
+
+\vspace{0.75em}
+
+\noindent\textbf{Conclusiones}\\
+\begin{enumerate}
+  \item La orquestación automatiza operaciones críticas y reduce errores humanos, mejorando disponibilidad y escalabilidad.
+  \item Kubernetes es la plataforma más madura para orquestar contenedores, pero exige gobernanza y control operativo para evitar complejidad innecesaria.
+  \item La arquitectura de microservicios acelera despliegues y escalabilidad por componente; sin embargo requiere inversión en observabilidad y pruebas distribuidas.
+  \item OAuth 2.0, correctamente implementado (p. ej. Authorization Code con PKCE), proporciona un marco robusto para delegar autorización en entornos modernos.
+  \item Aplicar los principios 12-factor facilita la portabilidad y la entrega continua en la nube; la disciplina en la configuración y el manejo de dependencias es clave.
+\end{enumerate}
+
+\vspace{0.75em}
+
+\noindent\textbf{Bibliografía}\\
+Burns, B., Beda, J., \& Hightower, K. (2017). \textit{Kubernetes: Up \& Running: Dive into the Future of Infrastructure}. O'Reilly Media.\\
+Newman, S. (2015). \textit{Building Microservices}. O'Reilly Media.\\
+Hardt, D. (2012). \textit{The OAuth 2.0 Authorization Framework} (RFC 6749). Recuperado de \url{https://tools.ietf.org/html/rfc6749}\\
+Wiggins, A. (2011). \textit{The Twelve-Factor App}. Heroku. Recuperado de \url{https://12factor.net}\\
+
+\end{document}
