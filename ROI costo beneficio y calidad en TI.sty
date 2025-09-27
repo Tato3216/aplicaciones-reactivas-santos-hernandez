@@ -1,0 +1,106 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{letterpaper, margin=2.4cm}
+
+\usepackage{setspace}
+\setstretch{1.0}
+
+\usepackage{newtxtext,newtxmath}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+\textbf{ROI costo beneficio y calidad en TI}\\
+\textit{S. G. Santos Hernandez}\\
+7690-21-21318\\
+Universidad Mariano Gálvez de Guatemala\\
+Seminario de Tecnologias de Informacion\\
+\textit{shernandezg20@miumg.edu.gt}
+\end{center}
+
+\noindent{Repositorio: \url{https://github.com/Tato3216/aplicaciones-reactivas-santos-hernandez}}
+
+\vspace{1.0em}
+\textbf{Resumen}
+
+Este artículo presenta un análisis sintético y aplicado de cuatro ejes clave para la toma de decisiones en proyectos de tecnologías de la información (TI): el retorno de la inversión (ROI, por sus siglas en inglés), el enfoque costo–beneficio, la factibilidad integral y las prácticas para garantizar la calidad del proyecto. En primer lugar, se propone una manera práctica de estimar el ROI combinando métricas financieras tradicionales (como el Valor Actual Neto, VAN, y la Tasa Interna de Retorno, TIR) con beneficios cualitativos relevantes para TI (reducción de incidentes, mejora de la satisfacción de usuarios y tiempos de respuesta). En segundo lugar, se describe un esquema de análisis costo–beneficio que distingue costos de capital, operativos y de riesgo, e incorpora sensibilidades ante variaciones de demanda y de costos de mantenimiento. En tercer lugar, se sintetiza un marco de factibilidad tipo TELOS (técnica, económica, legal, operativa y de cronograma) que permite filtrar tempranamente riesgos que puedan comprometer el éxito. Finalmente, se propone un plan de aseguramiento de la calidad que integra gestión de requisitos, revisiones por pares, pruebas automatizadas y métricas de control (cobertura, defectos por módulo y lead time), apoyado por integración y entrega continua. El trabajo concluye con observaciones prácticas para estudiantes y equipos que buscan justificar, ejecutar y evaluar proyectos de TI con criterios de valor, viabilidad y calidad verificable.
+
+\vspace{1.0em}
+\textbf{Palabras claves:} ROI, costo-beneficio, factibilidad, aseguramiento de la calidad, proyectos de TI
+
+\vspace{1.0em}
+\textbf{Desarrollo del tema}
+
+\emph{1) ROI: Retorno de la inversión en proyectos de TI.}
+El retorno de la inversión (ROI) mide el valor generado respecto a la inversión realizada. Su forma básica es:
+\[
+\text{ROI} = \frac{\text{Beneficio Neto}}{\text{Inversión}} \times 100\%.
+\]
+En TI, los \emph{beneficios netos} combinan ahorros (automatización, menor reproceso, menos incidencias), ingresos adicionales (nuevos canales, mayor conversión) y beneficios intangibles cuantificados mediante proxies (p.~ej., minutos ahorrados por usuario). Para decisiones intertemporales, se recomienda usar el Valor Actual Neto (VAN):
+\[
+\text{VAN} = \sum_{t=1}^{n} \frac{F_t}{(1+r)^t} - I_0,
+\]
+donde $F_t$ son flujos netos esperados, $r$ es la tasa de descuento y $I_0$ la inversión inicial. El VAN complementa el ROI al incorporar el valor del dinero en el tiempo. La Tasa Interna de Retorno (TIR) ayuda a comparar alternativas cuando existen restricciones de capital. Buenas prácticas: (a) explicitar supuestos de demanda y adopción, (b) separar beneficios recurrentes de los únicos, (c) correr análisis de sensibilidad (optimista, base, pesimista) y (d) incluir costos de operación y de deuda técnica.
+
+\emph{2) Enfoque costo–beneficio.}
+El análisis costo–beneficio (ACB) clasifica y valora todos los costos y beneficios a lo largo del ciclo de vida. Costos típicos: licencias, infraestructura (on-premise o nube), desarrollo, pruebas, capacitación, soporte y gestión del cambio. Beneficios: reducción de tiempos de ciclo, disminución de errores, escalabilidad y satisfacción de usuarios. Pasos sugeridos: (i) inventario completo de costos y beneficios, (ii) monetización con fuentes trazables, (iii) horizonte y tasa de descuento consistentes, (iv) cálculo de VAN/TIR, periodo de recuperación y punto de equilibrio, y (v) sensibilidad (p.~ej., \(\pm 20\%\) en demanda y costos). Para proyectos con beneficios intangibles, documentar la metodología de cuantificación (encuestas, tiempos de proceso, métricas operativas) evita sesgos.
+
+\emph{3) Factibilidad integral (TELOS).}
+Antes de ejecutar, la factibilidad reduce el riesgo de fracaso:
+\begin{itemize}
+  \item \textbf{Técnica:} ¿existen las capacidades tecnológicas, arquitecturas y competencias requeridas? Evaluar compatibilidad, seguridad, desempeño y mantenibilidad.
+  \item \textbf{Económica:} ¿el VAN es positivo y el presupuesto es realista? Considerar costos ocultos (integraciones, datos, soporte).
+  \item \textbf{Legal:} cumplimiento de licencias, privacidad y protección de datos; acuerdos de nivel de servicio.
+  \item \textbf{Operativa:} alineación con procesos, gobierno de TI, gestión del cambio y soporte post-despliegue.
+  \item \textbf{Cronograma:} secuencia factible, ruta crítica y colchones para riesgos.
+\end{itemize}
+Un resultado claro de TELOS habilita un \emph{go/no-go} informado o ajustes de alcance.
+
+\emph{4) ¿Cómo garantizar la calidad del proyecto?}
+Calidad no es solo probar al final; se construye desde requisitos hasta operación. Un plan práctico de aseguramiento de la calidad (QA) en TI puede incluir:
+\begin{itemize}
+  \item \textbf{Gestión de requisitos:} trazabilidad \(\text{requisito}\rightarrow\text{prueba}\rightarrow\text{despliegue}\).
+  \item \textbf{Revisiones por pares:} estándares de código, análisis estático y control de deuda técnica.
+  \item \textbf{Pruebas:} unitarias, de integración y end-to-end con cobertura objetivo; pruebas no funcionales (rendimiento, seguridad, usabilidad) según criticidad.
+  \item \textbf{CI/CD:} integración y entrega continua con pipelines reproducibles y controles de calidad automáticos (builds, pruebas, escáneres de seguridad).
+  \item \textbf{Métricas:} defectos por módulo, cobertura, tiempo medio de reparación (MTTR), lead time de cambios y tasa de fallos por despliegue.
+  \item \textbf{Gestión de riesgos:} matriz de riesgos con respuestas (evitar, mitigar, transferir, aceptar) y pruebas basadas en riesgo.
+  \item \textbf{Aseguramiento en producción:} monitoreo de experiencia de usuario, observabilidad (logs, métricas, trazas) y criterios de reversión.
+\end{itemize}
+El cierre incluye lecciones aprendidas y verificación de que el valor prometido (ROI/ACB) se materializa mediante métricas operativas y financieras.
+
+
+\vspace{1.0em}
+\textbf{Observaciones y comentarios}
+
+En proyectos de TI, la calidad y el valor se potencian cuando los equipos documentan supuestos y evidencias: fórmulas usadas, fuentes de monetización, criterios de aceptación y resultados de pruebas. La estimación debe ser transparente, repetible y auditable. A su vez, la disciplina de integrar QA en cada etapa reduce retrabajo y mejora la predictibilidad del cronograma. La combinación de TELOS, ACB y un plan de calidad pragmático acorta la distancia entre promesa y resultados medibles.
+
+\vspace{1.0em}
+\textbf{Conclusiones}
+
+1. El ROI por sí solo es insuficiente; debe complementarse con VAN/TIR y análisis de sensibilidad para reflejar el valor en el tiempo.\\
+2. Un ACB trazable —que monetice beneficios y costos operativos— mejora la comparabilidad entre alternativas.\\
+3. La factibilidad TELOS detecta tempranamente restricciones técnicas, económicas, legales, operativas y de cronograma.\\
+4. La calidad se garantiza integrando QA, automatización de pruebas y métricas de control a lo largo del ciclo de vida.\\
+5. La verificación post-implementación, con indicadores operativos y financieros, confirma (o corrige) las hipótesis del caso de negocio.
+
+\vspace{1.0em}
+\textbf{Bibliografía}
+
+Boardman, A. E., Greenberg, D. H., Vining, A. R., \& Weimer, D. L. (2018). \textit{Cost–Benefit Analysis: Concepts and Practice} (5th ed.). Cambridge University Press.\\
+
+Project Management Institute. (2021). \textit{A Guide to the Project Management Body of Knowledge (PMBOK\textsuperscript{\textregistered} Guide)} (7th ed.). PMI.\\
+
+International Organization for Standardization. (2015). \textit{ISO 9001:2015 Quality management systems—Requirements}. ISO.\\
+
+International Organization for Standardization/International Electrotechnical Commission. (2011). \textit{ISO/IEC 25010:2011 Systems and software engineering—Systems and software Quality Requirements and Evaluation (SQuaRE)}. ISO/IEC.\\
+
+Sommerville, I. (2015). \textit{Software Engineering} (10th ed.). Pearson.
+
+\end{document}
